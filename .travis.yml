@@ -1,0 +1,12 @@
+language: node_js
+before_install: npm install -g mocha
+deploy:
+  provider: s3
+  access_key_id: AKIAIDPKVI45XOOBATFA
+  secret_access_key:
+    secure: DFkn9uQtjMAqSytla/jSTYdX06FYF7YUNeQFOa5J6oJAiZAon0dCPe+v2ssPIXpQWX1C4OtOmUYOglTiZIURUJg+/cWzLs2lfR77SZwg1ABJ7YNI0UKCn1LJAkcBYqgpPs+UV74eyg0/cWFo8riqLtCftPapiOPGpT3ii/joJdUtlKgy4Obwf+7lSHLShK4wotWYoZKpeFhzqLien540+TJW+eLhp+v1F+Wn7aELMBYTYQz0gFSbpmZv6RxlWZt6GzGNRbAdd9h7j8BU6WRdkJIzpbqo3NZ+Btprqjp4ftAXRHsocli1hCndaUkJ1DqAnLI54OZrWrjpFpsjNuQpykxi/q1gE1YjIAXJCSSJXdEtGZBJALMJxagK5gc35vo7mOq4QMcHDiQF65kdD8IfsKg+sHde1XVGvxyMBm+ozZzo+OSJPvINU5rXEv8QgZAm2N0EzsKr9/oj+3PY5+AQfMfhdGlFNsxnB7NdY2LZexULqO2tPFXaKaKpG47gJnbgq2Pb4bwv1oee/fmCioa3GoG3ICkUnkUtxo8sm4hZ/pQS221paxrk2mUYfR/B7g4U8fNjM1LRtiLPKMDfRkpdkDRrWVbMoSgCEAwI8AKFRyAsDS7CLZT5f6tbWeTjBDfhn9FvL7UyxLZ32Jk8EmWufh6E/iAKK/tWKCU6Yqj0HsE=
+  bucket: borowiecka
+  upload-dir: awsWebApp
+  acl: public_read_write
+  on:
+    repo: iza16/aws-web-app

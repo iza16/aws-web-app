@@ -1,0 +1,29 @@
+{
+  "name": "projektAWS",
+  "version": "0.0.1",
+  "description": "AWS web",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Izabela Borowiecka",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "webs-weeia": "0.0.2",
+    "ejs": "^1.0.0",
+    "moment": "^2.5.1",
+    "async": "^0.2.10",
+    "aws-sdk": "^2.0.0-rc13"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iza16/AWS-app-web"
+  },
+  "bugs": {
+    "url": "https://github.com/iza16/AWS-app-web/issues"
+  }
+}
