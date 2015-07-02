@@ -18,20 +18,11 @@ var simpledb = new AWS.SimpleDB();
 
 var task = function(request, callback){
 	
-	
-	var paramsDomain = {
-		DomainName: 'borowieckaStatus'
-	};
-	
+
 	var paramsDomainInfo = {
 	DomainName: 'borowieckaLOG'
 	};
-	
-	simpledb.createDomain(paramsDomain, function(err,data) {
-	if(err) console.log(err, err.stack);
-	else	console.log("Baza danych status założona");
-	});
-	
+
 	simpledb.createDomain(paramsDomainInfo, function(err,data) {
 	if(err) console.log(err, err.stack);
 	else	console.log("Baza danych info założona");
@@ -104,7 +95,7 @@ var task = function(request, callback){
     			
     			    //sprawdzamy czy plik był już przetworzony
     			    var paramsCheck = {
-    				DomainName: 'borowieckaStatus', //required 
+    				DomainName: 'borowieckaLOG', //required 
     				ItemName: 'ITEM001', // required 
     				AttributeNames: [
     					key,
@@ -131,21 +122,6 @@ var task = function(request, callback){
 						//Po poprawnym wrzuceniu pliku i pobraniu jego danych
 						console.log("Plik zostal wrzucony poprawnie i jego dane zostaly odczytane");
 						
-						//wrzuca do bazy info, że jeszcze go nie zmieniono
-						var paramsdb = {
-							Attributes: [
-								{ Name: key, Value: 'no', Replace: true},
-							],
-							DomainName: "borowieckaStatus", 
-							ItemName: 'ITEM001'
-						};
-					
-						simpledb.putAttributes(paramsdb, function(err, datass) 
-						{
-							if (err) {
-								console.log('ERROR'+err, err.stack);
-							}
-							else {
 								//wrzuca do bazy dane (ip wrzucającego)
 								var paramsdb2 = {
 									Attributes: [
@@ -187,11 +163,11 @@ var task = function(request, callback){
 												console.log("Skrót dodania do kolejki -> MessageId: "+data2.MessageId);
 											}
 										});
-										//odczytuje z bazy dane i wywala na konsole
-											var paramsCheck1 = {
+										//odczytuje z bazy dane 
+										/*	var paramsCheck1 = {
 											    DomainName: 'borowieckaStatus', //required 
 											    ItemName: 'ITEM001', // required 
-										    };
+										    };*/
 											var paramsCheck2 = {
 										    	DomainName: 'borowieckaLOG', //required 
 										    	ItemName: 'ITEM001', // required 
@@ -204,17 +180,7 @@ var task = function(request, callback){
 													console.log(data);           // successful response
 												}
 											});		
-											simpledb.getAttributes(paramsCheck1, function(err, data) {
-											if (err) {
-												console.log(err, err.stack); // an error occurred
-											}
-											else {     
-												console.log(data);           // successful response
-											}
-									    });		
-								
-									}
-								});
+						
 							}  
 						});
 					}
